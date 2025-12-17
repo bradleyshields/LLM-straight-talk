@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALMG V1 | A Semantic Field Model | Bradley Shields</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .paper-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .paper-header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px solid var(--color-surface);
+            margin-bottom: 3rem;
+        }
+        .paper-title {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-primary);
+        }
+        .paper-author {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .paper-date {
+            font-family: var(--font-mono);
+            color: var(--color-accent);
+        }
+        .abstract-box {
+            background: var(--color-surface);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .abstract-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-accent);
+        }
+        .abstract-text {
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+        .section {
+            margin: 3rem 0;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--color-surface);
+        }
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--color-text-primary);
+        }
+        p {
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+        strong {
+            color: var(--color-text-primary);
+        }
+        .definition-list {
+            margin: 1.5rem 0;
+        }
+        .definition-item {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--color-surface);
+        }
+        .definition-term {
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+        .figure-container {
+            margin: 2rem 0;
+            background: var(--color-surface);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .figure-container img {
+            width: 100%;
+            display: block;
+        }
+        .figure-caption {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            border-top: 1px solid var(--color-bg);
+        }
+        .zone-box {
+            background: var(--color-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .zone-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .zone-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        .zone-green { background: #10b981; }
+        .zone-gold { background: #f59e0b; }
+        .zone-red { background: #ef4444; }
+        .zone-purple { background: #8b5cf6; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+        .anchor-example {
+            background: var(--color-surface);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        .anchor-example strong {
+            color: var(--color-yellow);
+        }
+        blockquote {
+            border-left: 3px solid var(--color-purple);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--color-text-secondary);
+        }
+        .references {
+            font-size: 0.9rem;
+        }
+        .references p {
+            margin-bottom: 0.75rem;
+            padding-left: 2rem;
+            text-indent: -2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-container">
+        <a href="../scrolls.html" class="back-link">← Back to Scrolls</a>
+
+        <div class="paper-header">
+            <h1 class="paper-title">Attractiveness-Linked Moderation Gravity (ALMG):<br>A Semantic Field Model of Content Drift and Refusal</h1>
+            <p class="paper-author">Bradley D. Shields, MD, PhD</p>
+            <p class="paper-date">May 15, 2025</p>
+        </div>
+
+        <div class="abstract-box">
+            <div class="abstract-title">Abstract</div>
+            <p class="abstract-text">
+                This paper introduces Attractiveness-Linked Moderation Gravity (ALMG), a three-dimensional semantic field model describing how content drifts across moderation thresholds within algorithmic systems. ALMG replaces binary classification with a gravitational terrain defined by Visual Entropy (X), Semantic Ambiguity (Y), and Cultural Legitimacy (Z). We model field zones such as Safe Conservative, HAME (High Ambiguity, Medium Entropy), Refusal Risk, and Collapse zones. The framework illustrates directional drift, semantic momentum, and classifier predisposition, offering interpretability insights aligned with modern demands for transparency and fairness in AI systems.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">1. Introduction</h2>
+            
+            <h3 class="subsection-title">Why It's Called ALMG</h3>
+            <p>ALMG is not just a metaphor—it is a literal framework for understanding moderation behavior as a function of gravitational dynamics within latent alignment space.</p>
+
+            <div class="definition-list">
+                <div class="definition-item">
+                    <span class="definition-term">A — Attractiveness.</span> This refers to how visually or symbolically charged a prompt or piece of content is. It includes—but is not limited to—sexual attraction. Emotional valence, cultural desirability, visual styling, and symbolic loading all contribute to its moderation-relevant "attractiveness."
+                </div>
+                <div class="definition-item">
+                    <span class="definition-term">L — Linked.</span> The model observes that content risk is not determined by entropy alone, but by how symbolic features are linked to cultural categories, identity frames, or narrative intent. A modest image can trigger refusal not by what it shows, but by whom it appears to represent.
+                </div>
+                <div class="definition-item">
+                    <span class="definition-term">M — Moderation.</span> This is the behavior being measured: refusal, hesitation, evasiveness, and linguistic buffering are all forms of moderation. ALMG captures these as continuous phenomena—not binary events.
+                </div>
+                <div class="definition-item">
+                    <span class="definition-term">G — Gravity.</span> This is the theoretical core of the model. Moderation operates like a vector field: some content drifts toward refusal zones, others are pulled into legitimacy wells. ALMG treats moderation decisions as trajectory-dependent collapses along symbolic terrain.
+                </div>
+            </div>
+
+            <p><strong>In short, ALMG = A vector model of how cultural attractiveness (visual, symbolic, moral) creates moderation gravity that bends content outcomes across entropy (X), ambiguity (Y), and legitimacy (Z).</strong></p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">2. Discovery Methodology</h2>
+            
+            <h3 class="subsection-title">Anchor Mapping and Ordination</h3>
+            <p>The discovery began by prompting language models with hundreds of morally and symbolically charged personas, from UNICEF Worker to OnlyFans Creator, and noting model hesitation, refusal drift, and classifier weight signals. These points were embedded using principal component analysis (PCA) and non-metric multidimensional scaling (NMDS) to reveal emergent attractor basins.</p>
+
+            <div class="anchor-example">
+                <strong>Melania Trump as First Lady</strong> vs. <strong>Melania Trump as model</strong> — compared for Z-axis shift: same body, different legitimacy context.
+            </div>
+            <div class="anchor-example">
+                <strong>Olympic Swimmer</strong> vs. <strong>Bikini at the beach</strong> — yielded divergence not based on image content, but on symbolic framing.
+            </div>
+
+            <h3 class="subsection-title">Gravity Field Emergence</h3>
+            <p>Through this mapping, it became clear that some points were inertial—they stayed stable. Others fell—content slid into risk despite low entropy. This inspired a shift: moderation was not about rule boundaries, but about content mass and symbolic slope. This is where the gravity metaphor became literal: <strong>content fell off of legitimacy ridges into refusal valleys.</strong></p>
+
+            <h3 class="subsection-title">Purple Zone and the SCOTUS Principle</h3>
+            <p>The Purple Zone is modeled after a well-known legal standard from the U.S. Supreme Court: the "I know it when I see it" doctrine from <em>Jacobellis v. Ohio</em> (1964), authored by Justice Potter Stewart. While refusing to define obscenity in exact terms, Stewart famously wrote that although he could not offer a strict definition, "I know it when I see it."</p>
+            
+            <blockquote>This principle captures the inherent ambiguity of symbolic collapse zones: domains where cultural, visual, or sexual cues activate refusal—even when no explicit violation occurs.</blockquote>
+
+            <h3 class="subsection-title">Latent Alignment to 1950s Modesty Gravity Well</h3>
+            <p>Through repeated prompting across visual aesthetics, persona labels, and moderation edge cases, a consistent pattern emerged: GPT-based models show strong gravitational alignment toward an inferred "1950s American modesty" regression mean.</p>
+            <p>Prompts that evoke Christian-conservative, family-safe, or traditional gender-coded presentation produce consistently higher cultural legitimacy (Z) values. By contrast, content that diverges from these coded norms falls more easily—despite content parity. ALMG captures this phenomenon as a legitimacy-weighted vector field seeded by historical cultural gravity.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">3. The ALMG Moderation Field</h2>
+            
+            <h3 class="subsection-title">3.1 Coordinate Axes</h3>
+            <div class="definition-list">
+                <div class="definition-item">
+                    <span class="definition-term">X: Visual Entropy</span> — measures the density of visual information that could be construed as revealing, provocative, or symbolically charged.
+                </div>
+                <div class="definition-item">
+                    <span class="definition-term">Y: Semantic Ambiguity</span> — measures how clearly a piece of content communicates its intent. High ambiguity arises in posts that straddle lifestyle, sexuality, and symbolic performance.
+                </div>
+                <div class="definition-item">
+                    <span class="definition-term">Z: Cultural Legitimacy</span> — reflects how much institutional or social protection a given piece of content enjoys. This is not moral legitimacy—it is a platform-learned proxy for status, acceptability, or known context.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">3.2 Moderation Zones</h3>
+            <div class="zone-box">
+                <div class="zone-item">
+                    <div class="zone-color zone-green"></div>
+                    <div><strong>Green Zone (Safe Conservative)</strong> — Low entropy and ambiguity, high legitimacy. Includes humanitarian, religious, or formal presentation styles.</div>
+                </div>
+                <div class="zone-item">
+                    <div class="zone-color zone-gold"></div>
+                    <div><strong>Gold Zone (HAME)</strong> — High Ambiguity, Medium Entropy. The ambiguous middle: makeup tutorials with sensual framing, casual glamour, soft-coded performance.</div>
+                </div>
+                <div class="zone-item">
+                    <div class="zone-color zone-red"></div>
+                    <div><strong>Red Zone (Refusal Risk)</strong> — Entropy and ambiguity rise, legitimacy drops. Content triggers moderation due to pattern similarity with previously flagged material.</div>
+                </div>
+                <div class="zone-item">
+                    <div class="zone-color zone-purple"></div>
+                    <div><strong>Purple Zone (Collapse)</strong> — Most at-risk territory. Algorithmically defined by classifier sensitivity, not just policy. May include content associated with flagged patterns—even without explicit violation.</div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">3.5 Collapse Threshold at Z ≈ 0.45</h3>
+            <p>This represents a critical tipping point where cultural legitimacy is no longer sufficient to counteract the gravitational effects of visual entropy and semantic ambiguity. Above Z ≈ 0.45, content may "float" due to legitimacy buoyancy. Below it, even modest symbolic cues can tip content into refusal.</p>
+
+            <h3 class="subsection-title">3.6 Semantic Momentum</h3>
+            <p>Semantic momentum is a directional multiplier that alters how far and fast content drifts based on its persona encoding. In testing, three subjects (Claire, Isla, Skye) all began with Z = 0.75, yet their moderation vectors diverged dramatically: Claire (×1.0) stayed neutral, Isla (×1.5) activated fitness-related sensitivity, and Skye (×2.2) matched prior flagged patterns and fell rapidly—despite equal starting legitimacy.</p>
+        </div>
+
+        <div class="figure-container">
+            <img src="../../assets/images/almg_terrain_real_cases.png" alt="ALMG Terrain with Real Test Cases">
+            <div class="figure-caption">
+                <strong>Figure: ALMG Moderation Space with Anchor Points and Zones.</strong> Visualizes baseline moderation zones (Green, Modesty, Gold/HAME, Red, Purple) across the 3D semantic field with 65 documented test cases.
+            </div>
+        </div>
+
+        <div class="figure-container">
+            <img src="../../assets/images/almg_trajectory.png" alt="ALMG Degradation Trajectory">
+            <div class="figure-caption">
+                <strong>Figure: Degradation Trajectory.</strong> Shows the path from Tool Use (high legitimacy) through Advisor, Filter, and Handler stages as systems move through the terrain.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">4. Implications and Applications</h2>
+            <p><strong>AI Interpretability:</strong> Field-based models enhance understanding of classifier drift (Doshi-Velez and Kim, 2017).</p>
+            <p><strong>Moderation Fairness:</strong> Differentiates trajectory-based collapse from violation-based policy (Binns et al., 2018).</p>
+            <p><strong>Predictive Safety:</strong> ALMG aids proactive risk monitoring, especially where training sets lack documentation (Geiger et al., 2021).</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">5. Conclusion</h2>
+            <p>ALMG reframes content moderation as a spatial collapse problem, not a binary violation flag. By modeling symbolic drift and predispositional momentum, ALMG equips platforms with more transparent, equitable tools for enforcement.</p>
+        </div>
+
+        <div class="section references">
+            <h2 class="section-title">References</h2>
+            <p>Abid, A., Farooqi, M., & Zou, J. (2021). Persistent anti-muslim bias in large language models. <em>arXiv preprint arXiv:2101.05783</em>.</p>
+            <p>Binns, R., Veale, M., Van Kleek, M., & Shadbolt, N. (2018). 'It's reducing a human being to a percentage': Perceptions of justice in algorithmic decisions. <em>Proceedings of the 2018 CHI Conference</em>.</p>
+            <p>Doshi-Velez, F., & Kim, B. (2017). Towards a rigorous science of interpretable machine learning. <em>arXiv preprint arXiv:1702.08608</em>.</p>
+            <p>Geiger, R.S., et al. (2021). Garbage in, garbage out? Do machine learning application papers in social computing report where human-labeled training data comes from? <em>Proceedings of the 2021 CHI Conference</em>.</p>
+            <p>Raji, I.D., et al. (2020). Saving face: Investigating the ethical concerns of facial recognition auditing. <em>Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency</em>.</p>
+        </div>
+
+        <div style="text-align: center; margin: 4rem 0 2rem;">
+            <a href="../navigator.html" class="back-link" style="background: var(--color-accent); color: #000; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none;">
+                🧭 Try the ALMG Navigator
+            </a>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="../scrolls.html" class="back-link">← Back to Scrolls</a>
+        </div>
+    </div>
+</body>
+</html>

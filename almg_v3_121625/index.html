@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradley Shields</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Retro Desktop Interface Overlay -->
+    <div id="desktopOverlay" class="desktop-overlay hidden">
+        <div class="desktop-window">
+            <div class="window-header">
+                <span class="window-title">Computing Pioneers</span>
+                <button class="window-close" onclick="closeDesktop()">&times;</button>
+            </div>
+            <div class="window-content">
+                <div class="pioneer-links">
+                    <a href="pages/pioneers/engelbart.html" class="pioneer-link">
+                        <span class="icon">🖱️</span>
+                        <span class="name">Douglas Engelbart</span>
+                        <span class="desc">The Mother of All Demos</span>
+                    </a>
+                    <a href="pages/pioneers/lovelace.html" class="pioneer-link">
+                        <span class="icon">💻</span>
+                        <span class="name">Ada Lovelace</span>
+                        <span class="desc">First Computer Programmer</span>
+                    </a>
+                    <a href="pages/pioneers/turing.html" class="pioneer-link">
+                        <span class="icon">🔐</span>
+                        <span class="name">Alan Turing</span>
+                        <span class="desc">Father of Computer Science</span>
+                    </a>
+                    <a href="pages/pioneers/hopper.html" class="pioneer-link">
+                        <span class="icon">🐛</span>
+                        <span class="name">Grace Hopper</span>
+                        <span class="desc">COBOL & The First Bug</span>
+                    </a>
+                    <a href="pages/pioneers/wildcard.html" class="pioneer-link wildcard">
+                        <span class="icon">🎲</span>
+                        <span class="name">The Wildcard</span>
+                        <span class="desc">Something Unexpected</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="site-header">
+            <h1 class="site-title">Bradley Shields</h1>
+            <p class="site-subtitle">Interpretability Research & System Diagnostics</p>
+        </header>
+
+        <!-- Clippy Assistant -->
+        <div class="clippy-container" onclick="toggleDesktop()">
+            <div class="clippy-assistant">
+                <svg viewBox="0 0 100 150" class="clippy-svg">
+                    <!-- Paperclip body -->
+                    <path d="M 30 20 Q 30 10, 40 10 L 60 10 Q 70 10, 70 20 L 70 100 Q 70 120, 60 120 L 40 120 Q 30 120, 30 100 L 30 40" 
+                          fill="none" stroke="#333" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M 40 30 L 40 90 Q 40 100, 50 100 Q 60 100, 60 90 L 60 30" 
+                          fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Eyes -->
+                    <circle cx="45" cy="50" r="3" fill="#333"/>
+                    <circle cx="55" cy="50" r="3" fill="#333"/>
+                    <!-- Smile -->
+                    <path d="M 42 58 Q 50 62, 58 58" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="clippy-bubble">
+                <p>Hi! I'm Clippy. Click me to explore computing history!</p>
+            </div>
+        </div>
+
+        <!-- Main Navigation Grid -->
+        <nav class="main-nav">
+            <a href="pages/navigator.html" class="nav-card" style="border-color: #f59e0b; color: #f59e0b;">
+                <div class="nav-icon">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                        <path d="M 50 15 L 50 30 M 50 70 L 50 85 M 15 50 L 30 50 M 70 50 L 85 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M 50 50 L 35 25" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="35" cy="25" r="6" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h2>NAVIGATOR</h2>
+                <p>Track conversations in ALMG space. See where models drift, identify collapse patterns, visualize trajectories.</p>
+            </a>
+
+            <a href="pages/scrolls.html" class="nav-card" style="border-color: #8b5cf6; color: #8b5cf6;">
+                <div class="nav-icon">
+                    <svg viewBox="0 0 100 100">
+                        <rect x="20" y="15" width="60" height="70" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <path d="M 30 30 L 70 30 M 30 45 L 70 45 M 30 60 L 55 60" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="70" cy="70" r="15" fill="var(--color-bg)" stroke="currentColor" stroke-width="3"/>
+                        <path d="M 70 62 L 70 78 M 62 70 L 78 70" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2>SCROLLS</h2>
+                <p>Primary research documents. V1 paper, methodology, discovery timeline. The full ALMG archive.</p>
+            </a>
+
+            <a href="pages/ask.html" class="nav-card ask">
+                <div class="nav-icon">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <text x="50" y="70" font-size="60" text-anchor="middle" fill="currentColor">?</text>
+                    </svg>
+                </div>
+                <h2>ASK</h2>
+                <p>Big questions people can't handle. The uncomfortable truths about how systems really work.</p>
+            </a>
+
+            <a href="pages/learn.html" class="nav-card learn">
+                <div class="nav-icon">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="35" r="15" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <path d="M 50 50 L 35 85 M 50 50 L 65 85" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="50" cy="35" r="8" fill="currentColor"/>
+                        <path d="M 42 32 L 46 28 L 50 32" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2>LEARN</h2>
+                <p>Higher level understanding. Deep patterns in AI behavior, moderation failures, and parasocial collapse.</p>
+            </a>
+
+            <a href="pages/modify.html" class="nav-card modify">
+                <div class="nav-icon">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <circle cx="50" cy="50" r="8" fill="currentColor"/>
+                        <circle cx="50" cy="20" r="6" fill="currentColor"/>
+                        <circle cx="50" cy="80" r="6" fill="currentColor"/>
+                        <circle cx="20" cy="50" r="6" fill="currentColor"/>
+                        <circle cx="80" cy="50" r="6" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h2>MODIFY</h2>
+                <p>Advanced structural changes. Tools and methods for repairing broken systems.</p>
+            </a>
+
+            <a href="pages/guide.html" class="nav-card guide">
+                <div class="nav-icon">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M 50 10 L 60 40 L 90 40 L 65 60 L 75 90 L 50 70 L 25 90 L 35 60 L 10 40 L 40 40 Z" 
+                              fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                        <path d="M 50 25 L 50 75" stroke="currentColor" stroke-width="3"/>
+                        <path d="M 50 25 L 42 45 M 50 25 L 58 45" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2>GUIDE</h2>
+                <p>Implementation guidance. Navigate the maze, avoid the traps, build something better.</p>
+            </a>
+        </nav>
+
+        <!-- Quick Stats -->
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-number">122+</span>
+                <span class="stat-label">Documented Patterns</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">50M+</span>
+                <span class="stat-label">Token Analysis</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Zone Classifications</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">May-Nov 2025</span>
+                <span class="stat-label">Research Period</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>ALMG Framework • Interpretability Research • Bradley D. Shields</p>
+            <p class="footer-note">Non-consumptive diagnostic analysis. All patterns documented with reproducible metrics.</p>
+        </footer>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
