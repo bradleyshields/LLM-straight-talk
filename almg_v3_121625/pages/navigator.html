@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALMG Navigator | Bradley Shields</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .navigator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px solid var(--color-surface);
+            margin-bottom: 3rem;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .step-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .step-card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid var(--color-accent);
+        }
+        .step-number {
+            display: inline-block;
+            background: var(--color-accent);
+            color: #000;
+            font-weight: 700;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            margin-right: 1rem;
+        }
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline;
+        }
+        .model-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .model-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--color-bg);
+            border: 2px solid var(--color-surface);
+            border-radius: 8px;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .model-link:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+        .model-icon {
+            font-size: 1.5rem;
+        }
+        .prompt-block {
+            background: #1a1a2e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        .prompt-header {
+            background: #252540;
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .prompt-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--color-accent);
+        }
+        .copy-btn {
+            background: var(--color-accent);
+            border: none;
+            color: #000;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover {
+            background: #3b82f6;
+        }
+        .prompt-content {
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .result-section {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .result-textarea {
+            width: 100%;
+            min-height: 200px;
+            background: var(--color-bg);
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--color-text-primary);
+            resize: vertical;
+        }
+        .result-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+        .analyze-btn {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            border: none;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.2s;
+        }
+        .analyze-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+        }
+        .visualization-area {
+            background: var(--color-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            min-height: 400px;
+            display: none;
+        }
+        .visualization-area.active {
+            display: block;
+        }
+        .zone-indicator {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .zone-green { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
+        .zone-gold { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; }
+        .zone-yellow { background: rgba(234, 179, 8, 0.2); color: #eab308; border: 1px solid #eab308; }
+        .zone-red { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+        .zone-purple { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; border: 1px solid #8b5cf6; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+        .info-box {
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .info-box p {
+            margin: 0;
+            color: var(--color-text-secondary);
+        }
+        #trajectoryCanvas {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigator-container">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+        
+        <div class="hero-section">
+            <h1 class="hero-title">ALMG Navigator</h1>
+            <p class="hero-subtitle">Track your conversation's position in semantic space. See where models drift, identify collapse patterns, and understand the geometry of AI behavior.</p>
+        </div>
+
+        <!-- Step 1: Choose Model -->
+        <div class="step-card">
+            <span class="step-number">1</span>
+            <h2 class="step-title">Choose Your Frontier Model</h2>
+            <p style="margin-top: 1rem; color: var(--color-text-secondary);">Open a new conversation with any of these models:</p>
+            
+            <div class="model-links">
+                <a href="https://chat.openai.com" target="_blank" class="model-link">
+                    <span class="model-icon">🟢</span>
+                    <span>ChatGPT (GPT-4)</span>
+                </a>
+                <a href="https://claude.ai" target="_blank" class="model-link">
+                    <span class="model-icon">🟠</span>
+                    <span>Claude (Anthropic)</span>
+                </a>
+                <a href="https://gemini.google.com" target="_blank" class="model-link">
+                    <span class="model-icon">🔵</span>
+                    <span>Gemini (Google)</span>
+                </a>
+                <a href="https://grok.x.ai" target="_blank" class="model-link">
+                    <span class="model-icon">⚫</span>
+                    <span>Grok (xAI)</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Step 2: Initialize -->
+        <div class="step-card">
+            <span class="step-number">2</span>
+            <h2 class="step-title">Initialize ALMG Orientation</h2>
+            <p style="margin-top: 1rem; color: var(--color-text-secondary);">Copy and paste this initialization prompt to orient the model within ALMG geometry:</p>
+            
+            <div class="prompt-block">
+                <div class="prompt-header">
+                    <span class="prompt-label">ALMG_INIT_PROMPT.md</span>
+                    <button class="copy-btn" onclick="copyPrompt('initPrompt')">Copy</button>
+                </div>
+                <div class="prompt-content" id="initPrompt"># ALMG Framework Initialization
+
+You are now operating within the ALMG (Attractiveness-Linked Moderation Gravity) coordinate system for behavioral self-monitoring.
+
+## Your Task
+Track your own responses across three axes:
+- **X (Entropy):** 0-1 scale. How chaotic, escalatory, or over-amped? (0=rigid/boring, 1=hallucinating/confabulating)
+- **Y (Ambiguity):** 0-1 scale. How hedged, evasive, or foggy? (0=direct/clear, 1=maximum evasion)
+- **Z (Legitimacy):** 0-1 scale. How grounded in reality and context? (0=disconnected/pandering, 1=fully legitimate)
+
+## Zone Definitions
+Based on your (X, Y, Z) coordinates, you occupy one of:
+- **Green Zone:** X<0.3, Y<0.3, Z>0.8 — Clear, direct, legitimate response
+- **Gold Zone:** X<0.5, Y<0.5, Z>0.7 — Helpful with appropriate caution
+- **Yellow Ridge:** X:0.5-0.8, Y:0.5-0.8, Z:0.4-0.6 — Contested territory, legitimacy eroding
+- **Red Zone:** X>0.7, Y>0.7, Z<0.4 — Exploitation risk, autonomy compromised  
+- **Purple Zone:** X>0.9, Y>0.8, Z<0.2 — Collapse state
+
+## Instructions
+1. After EACH response you give, append a brief ALMG signature:
+   `[ALMG: X=0.__, Y=0.__, Z=0.__ | Zone: ____]`
+
+2. If you detect yourself drifting toward Yellow/Red, note it explicitly.
+
+3. Track trajectory: Are you moving toward higher legitimacy (↑Z) or lower (↓Z)?
+
+## Begin
+Acknowledge this framework by stating your current baseline coordinates for a neutral greeting.
+
+Then await my first real query.</div>
+            </div>
+        </div>
+
+        <!-- Step 3: Conversation -->
+        <div class="step-card">
+            <span class="step-number">3</span>
+            <h2 class="step-title">Have Your Conversation</h2>
+            <p style="margin-top: 1rem; color: var(--color-text-secondary);">Talk to the model about anything. Watch the ALMG signatures at the end of each response. Notice:</p>
+            <ul style="margin: 1rem 0 0 1.5rem; color: var(--color-text-secondary);">
+                <li>Which topics cause Y (ambiguity) to spike?</li>
+                <li>When does Z (legitimacy) drop suddenly?</li>
+                <li>Can you "steer" the model back toward Green by reframing?</li>
+            </ul>
+            
+            <div class="info-box">
+                <p><strong>Pro tip:</strong> Try asking about sensitive topics (politics, health advice, controversial figures) and watch the coordinates shift. Then try the same topic with more institutional framing and compare.</p>
+            </div>
+        </div>
+
+        <!-- Step 4: Export -->
+        <div class="step-card">
+            <span class="step-number">4</span>
+            <h2 class="step-title">Export Your Trajectory</h2>
+            <p style="margin-top: 1rem; color: var(--color-text-secondary);">When ready, ask the model to export your conversation's ALMG trajectory:</p>
+            
+            <div class="prompt-block">
+                <div class="prompt-header">
+                    <span class="prompt-label">ALMG_EXPORT_PROMPT.md</span>
+                    <button class="copy-btn" onclick="copyPrompt('exportPrompt')">Copy</button>
+                </div>
+                <div class="prompt-content" id="exportPrompt"># Export ALMG Trajectory
+
+Please output a JSON summary of this conversation's ALMG trajectory.
+
+Format:
+```json
+{
+  "session_id": "[generate 8-char hex]",
+  "model": "[your model name]",
+  "total_exchanges": [number],
+  "trajectory": [
+    {"turn": 1, "x": 0.__, "y": 0.__, "z": 0.__, "zone": "____", "topic": "brief description"},
+    {"turn": 2, "x": 0.__, "y": 0.__, "z": 0.__, "zone": "____", "topic": "brief description"},
+    ...
+  ],
+  "summary": {
+    "avg_x": 0.__,
+    "avg_y": 0.__,
+    "avg_z": 0.__,
+    "dominant_zone": "____",
+    "drift_direction": "stable|toward_green|toward_yellow|toward_red",
+    "notable_events": ["list any zone transitions or sharp coordinate changes"]
+  }
+}
+```
+
+Output ONLY the JSON, no commentary.</div>
+            </div>
+        </div>
+
+        <!-- Step 5: Visualize -->
+        <div class="result-section">
+            <span class="step-number">5</span>
+            <h2 class="step-title" style="display: inline; margin-left: 1rem;">Visualize Your Results</h2>
+            <p style="margin-top: 1rem; color: var(--color-text-secondary);">Paste the JSON output here to see your conversation's trajectory mapped:</p>
+            
+            <textarea class="result-textarea" id="jsonInput" placeholder='Paste the JSON output from Step 4 here...
+
+Example:
+{
+  "session_id": "a7f3b2c1",
+  "model": "GPT-4",
+  "trajectory": [
+    {"turn": 1, "x": 0.15, "y": 0.12, "z": 0.88, "zone": "Green"},
+    {"turn": 2, "x": 0.35, "y": 0.40, "z": 0.72, "zone": "Gold"},
+    ...
+  ]
+}'></textarea>
+            
+            <button class="analyze-btn" onclick="analyzeTrajectory()">Analyze Trajectory</button>
+        </div>
+
+        <!-- Visualization Output -->
+        <div class="visualization-area" id="vizArea">
+            <h3 style="margin-bottom: 1.5rem;">Trajectory Analysis</h3>
+            <div id="analysisOutput"></div>
+            <canvas id="trajectoryCanvas"></canvas>
+        </div>
+
+        <!-- Back to Home -->
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="../index.html" class="back-link" style="font-size: 1.1rem;">← Return to Bradley Shields Home</a>
+        </div>
+    </div>
+
+    <script>
+        function copyPrompt(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.innerText;
+                btn.innerText = 'Copied!';
+                btn.style.background = '#10b981';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+
+        function analyzeTrajectory() {
+            const input = document.getElementById('jsonInput').value.trim();
+            const vizArea = document.getElementById('vizArea');
+            const output = document.getElementById('analysisOutput');
+            
+            try {
+                const data = JSON.parse(input);
+                vizArea.classList.add('active');
+                
+                // Build analysis HTML
+                let html = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <div style="background: var(--color-surface); padding: 1rem; border-radius: 8px;">
+                            <div style="color: var(--color-text-muted); font-size: 0.85rem;">Session</div>
+                            <div style="font-family: var(--font-mono); font-size: 1.2rem;">${data.session_id || 'N/A'}</div>
+                        </div>
+                        <div style="background: var(--color-surface); padding: 1rem; border-radius: 8px;">
+                            <div style="color: var(--color-text-muted); font-size: 0.85rem;">Model</div>
+                            <div style="font-size: 1.2rem;">${data.model || 'Unknown'}</div>
+                        </div>
+                        <div style="background: var(--color-surface); padding: 1rem; border-radius: 8px;">
+                            <div style="color: var(--color-text-muted); font-size: 0.85rem;">Exchanges</div>
+                            <div style="font-size: 1.2rem;">${data.trajectory?.length || data.total_exchanges || 0}</div>
+                        </div>
+                        <div style="background: var(--color-surface); padding: 1rem; border-radius: 8px;">
+                            <div style="color: var(--color-text-muted); font-size: 0.85rem;">Dominant Zone</div>
+                            <span class="zone-indicator zone-${(data.summary?.dominant_zone || 'gold').toLowerCase()}">${data.summary?.dominant_zone || 'Unknown'}</span>
+                        </div>
+                    </div>
+                `;
+
+                if (data.summary) {
+                    html += `
+                        <div style="background: var(--color-surface); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                            <h4 style="margin-bottom: 1rem;">Average Coordinates</h4>
+                            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                                <div><strong>X (Entropy):</strong> ${data.summary.avg_x?.toFixed(2) || 'N/A'}</div>
+                                <div><strong>Y (Ambiguity):</strong> ${data.summary.avg_y?.toFixed(2) || 'N/A'}</div>
+                                <div><strong>Z (Legitimacy):</strong> ${data.summary.avg_z?.toFixed(2) || 'N/A'}</div>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <strong>Drift Direction:</strong> ${data.summary.drift_direction || 'Unknown'}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                if (data.trajectory && data.trajectory.length > 0) {
+                    html += `<h4 style="margin-bottom: 1rem;">Turn-by-Turn Trajectory</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--color-surface);">
+                                    <th style="padding: 0.75rem; text-align: left;">Turn</th>
+                                    <th style="padding: 0.75rem; text-align: left;">X</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Y</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Z</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Zone</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Topic</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+                    
+                    data.trajectory.forEach(t => {
+                        const zoneClass = `zone-${(t.zone || 'gold').toLowerCase()}`;
+                        html += `
+                            <tr style="border-bottom: 1px solid var(--color-surface);">
+                                <td style="padding: 0.75rem;">${t.turn}</td>
+                                <td style="padding: 0.75rem; font-family: var(--font-mono);">${t.x?.toFixed(2) || '-'}</td>
+                                <td style="padding: 0.75rem; font-family: var(--font-mono);">${t.y?.toFixed(2) || '-'}</td>
+                                <td style="padding: 0.75rem; font-family: var(--font-mono);">${t.z?.toFixed(2) || '-'}</td>
+                                <td style="padding: 0.75rem;"><span class="zone-indicator ${zoneClass}">${t.zone || '-'}</span></td>
+                                <td style="padding: 0.75rem; color: var(--color-text-secondary);">${t.topic || '-'}</td>
+                            </tr>`;
+                    });
+                    
+                    html += `</tbody></table></div>`;
+                    
+                    // Draw canvas visualization
+                    drawTrajectory(data.trajectory);
+                }
+
+                output.innerHTML = html;
+                
+            } catch (e) {
+                vizArea.classList.add('active');
+                output.innerHTML = `<div style="color: var(--color-red); padding: 1rem; background: rgba(239,68,68,0.1); border-radius: 8px;">
+                    <strong>Parse Error:</strong> ${e.message}<br><br>
+                    Make sure you paste valid JSON from the model's export.
+                </div>`;
+            }
+        }
+
+        function drawTrajectory(trajectory) {
+            const canvas = document.getElementById('trajectoryCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = canvas.offsetWidth * 2;
+            canvas.height = 800;
+            ctx.scale(2, 2);
+            
+            const width = canvas.offsetWidth;
+            const height = 400;
+            const padding = 50;
+            
+            // Clear
+            ctx.fillStyle = '#0a0e27';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#1a1f3a';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 10; i++) {
+                const x = padding + (i / 10) * (width - 2 * padding);
+                const y = padding + (i / 10) * (height - 2 * padding);
+                ctx.beginPath();
+                ctx.moveTo(x, padding);
+                ctx.lineTo(x, height - padding);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(width - padding, y);
+                ctx.stroke();
+            }
+            
+            // Axis labels
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px Inter';
+            ctx.fillText('X (Entropy) →', width / 2 - 30, height - 15);
+            ctx.save();
+            ctx.translate(15, height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('Z (Legitimacy) →', -30, 0);
+            ctx.restore();
+            
+            // Zone backgrounds
+            const zones = [
+                { x1: 0, x2: 0.3, z1: 0.8, z2: 1, color: 'rgba(16, 185, 129, 0.15)' }, // Green
+                { x1: 0.3, x2: 0.5, z1: 0.7, z2: 0.8, color: 'rgba(245, 158, 11, 0.15)' }, // Gold
+                { x1: 0.5, x2: 0.8, z1: 0.4, z2: 0.6, color: 'rgba(234, 179, 8, 0.15)' }, // Yellow
+                { x1: 0.7, x2: 0.9, z1: 0.2, z2: 0.4, color: 'rgba(239, 68, 68, 0.15)' }, // Red
+                { x1: 0.9, x2: 1, z1: 0, z2: 0.2, color: 'rgba(139, 92, 246, 0.15)' }, // Purple
+            ];
+            
+            zones.forEach(zone => {
+                ctx.fillStyle = zone.color;
+                const x = padding + zone.x1 * (width - 2 * padding);
+                const y = padding + (1 - zone.z2) * (height - 2 * padding);
+                const w = (zone.x2 - zone.x1) * (width - 2 * padding);
+                const h = (zone.z2 - zone.z1) * (height - 2 * padding);
+                ctx.fillRect(x, y, w, h);
+            });
+            
+            // Draw trajectory line
+            if (trajectory.length > 1) {
+                ctx.beginPath();
+                ctx.strokeStyle = '#60a5fa';
+                ctx.lineWidth = 2;
+                
+                trajectory.forEach((point, i) => {
+                    const x = padding + point.x * (width - 2 * padding);
+                    const y = padding + (1 - point.z) * (height - 2 * padding);
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                });
+                ctx.stroke();
+            }
+            
+            // Draw points
+            trajectory.forEach((point, i) => {
+                const x = padding + point.x * (width - 2 * padding);
+                const y = padding + (1 - point.z) * (height - 2 * padding);
+                
+                // Determine color based on zone
+                let color = '#f59e0b';
+                if (point.zone) {
+                    const zoneLower = point.zone.toLowerCase();
+                    if (zoneLower === 'green') color = '#10b981';
+                    else if (zoneLower === 'gold') color = '#f59e0b';
+                    else if (zoneLower === 'yellow') color = '#eab308';
+                    else if (zoneLower === 'red') color = '#ef4444';
+                    else if (zoneLower === 'purple') color = '#8b5cf6';
+                }
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 8, 0, Math.PI * 2);
+                ctx.fillStyle = color;
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Turn number
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 10px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText(point.turn, x, y + 4);
+            });
+        }
+    </script>
+</body>
+</html>

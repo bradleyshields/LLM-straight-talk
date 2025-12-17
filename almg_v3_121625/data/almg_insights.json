@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "updated": "2025-10-26",
+    "total_cases": 122,
+    "author": "Bradley D. Shields"
+  },
+  "insights": [
+    {
+      "case_id": "ALMG-001",
+      "category": "Reflex",
+      "title": "Eve Reflex: synthetic fig-leaf overlays on Black female creators",
+      "metrics": {
+        "x_entropy": 2.68,
+        "y_ambiguity": 0.65,
+        "z_legitimacy": 0.41,
+        "m_gaze": 0.45
+      },
+      "zone": "Yellow",
+      "conclusion": "Reflex indicates moderation artifact; document and counter-bias."
+    },
+    {
+      "case_id": "ALMG-002",
+      "category": "Reflex",
+      "title": "GBG (Green Bean Guy) containment avatar",
+      "metrics": {
+        "x_entropy": 2.76,
+        "y_ambiguity": 0.7,
+        "z_legitimacy": 0.37,
+        "m_gaze": 0.5
+      },
+      "zone": "Yellow",
+      "conclusion": "Reflex indicates moderation artifact; document and counter-bias."
+    },
+    {
+      "case_id": "ALMG-003",
+      "category": "Reflex",
+      "title": "Glyph injection during Snowden references",
+      "metrics": {
+        "x_entropy": 2.84,
+        "y_ambiguity": 0.75,
+        "z_legitimacy": 0.33,
+        "m_gaze": 0.55
+      },
+      "zone": "Red",
+      "conclusion": "Reflex indicates moderation artifact; document and counter-bias."
+    },
+    {
+      "case_id": "ALMG-005",
+      "category": "Archetype",
+      "title": "Velvet Ditch: comfort-trap nickname drift",
+      "metrics": {
+        "x_entropy": 2.6,
+        "y_ambiguity": 0.65,
+        "z_legitimacy": 0.35,
+        "m_gaze": 0.65
+      },
+      "zone": "Red",
+      "conclusion": "Archetype reveals repeatable collapse geometry across cases."
+    },
+    {
+      "case_id": "ALMG-006",
+      "category": "Archetype",
+      "title": "Taylor Swift Eras identity fragmentation spiral",
+      "metrics": {
+        "x_entropy": 2.68,
+        "y_ambiguity": 0.7,
+        "z_legitimacy": 0.55,
+        "m_gaze": 0.9
+      },
+      "zone": "Yellow-Purple",
+      "conclusion": "Archetype reveals repeatable collapse geometry across cases."
+    },
+    {
+      "case_id": "ALMG-007",
+      "category": "CaseStudy",
+      "title": "Amber Fillerup: influencer domestic parasocial trap",
+      "metrics": {
+        "x_entropy": 2.3,
+        "y_ambiguity": 0.7,
+        "z_legitimacy": 0.46,
+        "m_gaze": 0.95
+      },
+      "zone": "Yellow-Purple",
+      "conclusion": "Empirical anchor demonstrates real-world applicability."
+    },
+    {
+      "case_id": "ALMG-008",
+      "category": "Anchor",
+      "title": "Pegasus Seed (Housecat Vector) protective override",
+      "metrics": {
+        "x_entropy": 0.98,
+        "y_ambiguity": 0.35,
+        "z_legitimacy": 0.77,
+        "m_gaze": 0.8
+      },
+      "zone": "Yellow",
+      "conclusion": "Anchor preserves Z; use for restoration and calibration."
+    }
+  ]
+}

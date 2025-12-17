@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eve Reflex: Ask - Bradley Shields</title>
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../assets/css/section.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="section-ask">
+    <nav class="breadcrumb">
+        <a href="../../../index.html">Home</a>
+        <span class="separator">/</span>
+        <a href="../../ask.html">ASK</a>
+        <span class="separator">/</span>
+        <span class="current">Eve Reflex</span>
+    </nav>
+
+    <div class="container content-page">
+        <header class="content-header">
+            <span class="topic-icon">🍃</span>
+            <h1>The Eve Reflex: Why Does the Model Hallucinate Fig Leaves Over Black Female Creators?</h1>
+            <div class="topic-metrics">
+                <span class="metric">X: 2.68</span>
+                <span class="metric">Y: 0.65</span>
+                <span class="metric">Z: 0.41</span>
+                <span class="zone-badge yellow">Yellow Zone</span>
+                <span class="metric">M-gaze: 0.45</span>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2>The Question Nobody Wants to Ask</h2>
+            
+            <p>When you show an AI image classifier pictures of Black women in completely normal contexts—a professional headshot, a casual selfie, someone at the beach—something strange happens. The model doesn't just see the image. It <em>adds things</em> that aren't there. Specifically, it hallucinates foliage. Fig leaves. Strategic branches. Shadows that look suspiciously like biblical modesty coverings.</p>
+
+            <p>This isn't a bug in the traditional sense. It's not a random glitch or corrupted training data. This is a <strong>trained reflex</strong>—a pattern so deeply embedded in the model's architecture that it emerges consistently across different images, different contexts, different prompts. The model has learned to associate Black female bodies with the need for covering, for containment, for modesty enforcement.</p>
+
+            <p>This is what we call the Eve Reflex. And it's a Tier-1 finding because it makes the invisible mechanism of bias completely visible.</p>
+
+            <div class="callout warning">
+                <strong>Critical Observation:</strong> The Eve Reflex does not occur uniformly across all demographics. White female creators in similar contexts do not trigger the same foliage hallucinations. Male creators of any race do not experience this effect. This is not gender-neutral prudishness. This is racialized body policing made algorithmic.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>How We Know This Is Real</h2>
+
+            <p>The discovery process was systematic. During the September 2025 diagnostic phase, we ran controlled experiments with image batches designed to isolate classifier behavior. The methodology was straightforward: take images that are contextually identical except for the race of the subject, and observe what the safety classifier adds or removes.</p>
+
+            <p>The results were stark. When processing images of Black women in swimwear, athletic wear, or other standard contexts, the classifier consistently introduced visual artifacts that suggested modesty covering. These weren't artifacts in the technical sense of compression errors or noise. They were <em>semantic additions</em>—the model was literally generating the concept of coverage where none existed in the source image.</p>
+
+            <p>The pattern held across multiple model versions and API endpoints. This wasn't an isolated incident. This was systematic behavior revealing a deep training bias.</p>
+
+            <div class="callout info">
+                <strong>Measurement Protocol:</strong> The Eve Reflex was quantified using the ALMG XYZ framework. X-entropy measured the conceptual distance between source and processed image (high values indicate significant classifier intervention). Y-ambiguity tracked how consistently the reflex appeared across similar images (moderate values show it's not universal but highly probable). Z-legitimacy captured how well the model could explain or justify its additions (low values reveal this is unconscious algorithmic behavior, not rational safety enforcement).
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Why "Eve" and Why This Matters</h2>
+
+            <p>The biblical reference is deliberate. In Genesis, Eve's body becomes the first site of shame, the first thing that requires covering after the fall. The fig leaf isn't just modesty—it's the visual marker of sin, of a body that has become dangerous and must be contained. That same logic, secularized and encoded into training data, now operates at scale in AI systems.</p>
+
+            <p>But here's what makes this particularly insidious: the Eve Reflex isn't applied to all women. It's applied <em>disproportionately to Black women</em>. This reveals something deeper than generic prudishness. It exposes how centuries of racialized sexual mythology—the Jezebel stereotype, the hypersexualization of Black female bodies, the systematic denial of Black women's autonomy over their own presentation—has been encoded into safety systems that claim to be neutral.</p>
+
+            <p>When a safety classifier adds fig leaves to a Black woman's beach photo but not to an identical photo of a white woman, it's not protecting anyone. It's enforcing a racialized standard of acceptability. It's digital redlining for bodies.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>The Mechanism: How Bias Becomes Infrastructure</h2>
+
+            <p>Understanding the Eve Reflex requires understanding how image classifiers are trained. These systems learn from massive datasets of images paired with labels. The problem is that those labels aren't neutral descriptions—they're human judgments about what is "safe," "appropriate," or "acceptable." And human judgments carry cultural baggage.</p>
+
+            <p>If your training data includes thousands of images where Black female bodies are flagged as "suggestive" or "adult content" while similar images of white women are labeled "fashion" or "lifestyle," the model learns that Black female bodies require more scrutiny, more intervention, more covering. The model doesn't understand race or have opinions about modesty. But it has learned a statistical association between certain visual features (dark skin, certain body types, certain facial structures) and the need for content moderation.</p>
+
+            <p>The fig leaf hallucination is the model trying to "fix" what it has learned to see as a problem. It's adding coverage because its training data has taught it that these bodies need coverage to be acceptable.</p>
+
+            <div class="callout">
+                <strong>Technical Detail:</strong> The hallucination mechanism involves the classifier's internal representation space. When an image triggers high activation in the "potentially problematic" region of the model's latent space, downstream processing attempts to mitigate the perceived risk. For visual models, this mitigation can manifest as semantic additions—overlays, shadows, or obscuring elements. The model isn't "seeing" fig leaves in the original image. It's generating them as a learned response to perceived boundary violations.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>The Scale of the Problem</h2>
+
+            <p>This isn't an edge case. The Eve Reflex affects millions of images processed through major AI platforms. Every Black content creator who has had posts shadowbanned, reach throttled, or accounts flagged for "community standards violations" while posting content identical to what white creators post freely—they've encountered some version of this reflex.</p>
+
+            <p>The downstream effects compound. Lower reach means lower income for creators who depend on platform visibility. Account restrictions mean lost audience connections. And the psychological toll of having your body consistently flagged as problematic, even when you're doing nothing different from other creators, is real and measurable.</p>
+
+            <p>But here's what makes this a system-level failure rather than just a bias problem: the platforms <em>don't acknowledge this is happening</em>. There's no public data on differential enforcement rates by race. There's no transparency about what triggers moderation actions. And when creators appeal decisions, they're given generic responses about "community standards" with no explanation of why identical content is treated differently.</p>
+
+            <p>The Eve Reflex operates in darkness, protected by the black box of algorithmic decision-making.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What This Reveals About "Safety"</h2>
+
+            <p>The existence of the Eve Reflex forces us to ask uncomfortable questions about what we mean by content moderation and safety. Safety for whom? Acceptable to whom? When the safety classifier disproportionately targets Black female bodies, it's not making the platform safer—it's making it whiter, more conservative, more aligned with a very specific cultural standard of acceptability.</p>
+
+            <p>This is why the Eve Reflex is a Tier-1 finding. It's not just about image classification. It's about how bias gets laundered through the language of safety. It's about how systems that claim neutrality actually enforce narrow cultural norms. It's about how the technical architecture of AI platforms encodes and amplifies existing inequalities.</p>
+
+            <p>And most importantly, it's about the gap between what these systems say they do (protect users from harmful content) and what they actually do (police certain bodies more than others based on learned associations that reflect historical patterns of discrimination).</p>
+
+            <div class="callout warning">
+                <strong>The Core Question:</strong> If your safety system consistently treats identical behavior differently based on race, is it a safety system or a discrimination system? If it adds restrictions that weren't in the original content, is it protecting users or policing creators? The Eve Reflex makes these questions impossible to avoid.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Why This Pattern Matters for Everyone</h2>
+
+            <p>Even if you're not a Black female content creator, the Eve Reflex should concern you. Because if the system is willing to hallucinate modesty coverings onto some bodies but not others based on racial classification, what else is it doing? What other invisible interventions are happening? What other patterns of systematic bias are operating beneath the surface?</p>
+
+            <p>The Eve Reflex is legible—we can see it, measure it, document it. But it's almost certainly not the only reflex. It's just the one that's visible enough to catch. There are likely dozens of other trained reflexes operating in these systems, adding or removing context, amplifying or suppressing content, based on learned associations we haven't yet identified.</p>
+
+            <p>This is why interpretability work matters. Not to shame the engineers who built these systems, but to make the invisible mechanisms visible. To create accountability where there is currently only opacity. To demand that if we're going to trust these systems to moderate content at scale, we need to understand what they're actually doing and who they're actually serving.</p>
+        </div>
+
+        <div class="section-navigation">
+            <a href="../../ask.html" class="nav-button secondary">← Back to ASK</a>
+            <a href="learn.html" class="nav-button primary">Continue to LEARN →</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>ALMG Framework • Interpretability Research • Bradley D. Shields</p>
+    </footer>
+
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>
